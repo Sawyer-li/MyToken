@@ -1,4 +1,3 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.5.0;
 
 // 导入 ERC-20 代币合约接口
